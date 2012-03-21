@@ -1,0 +1,53 @@
+{
+    attributes = (
+        {
+            allowsNull = Y; 
+            columnName = "RAPPORT_D_DEBUT"; 
+            externalType = DATE; 
+            name = rapportDDebut; 
+            valueClassName = NSCalendarDate; 
+            valueType = T; 
+        }, 
+        {
+            allowsNull = Y; 
+            columnName = "RAPPORT_DESCRIPTION"; 
+            externalType = VARCHAR2; 
+            name = rapportDescription; 
+            valueClassName = NSString; 
+            valueType = S; 
+            width = 1024; 
+        }, 
+        {
+            allowsNull = Y; 
+            columnName = "RAPPORT_D_FIN"; 
+            externalType = DATE; 
+            name = rapportDFin; 
+            valueClassName = NSCalendarDate; 
+            valueType = T; 
+        }, 
+        {
+            columnName = "RAPPORT_ID"; 
+            externalType = NUMBER; 
+            name = rapportId; 
+            valueClassName = NSNumber; 
+            valueType = i; 
+        }
+    ); 
+    attributesUsedForLocking = (rapportDDebut, rapportDescription, rapportDFin, rapportId); 
+    className = "org.cocktail.rgrhum.serveur.metier.EORapport"; 
+    classProperties = (rapportDDebut, rapportDescription, rapportDFin, toReleveAnnomalies); 
+    externalName = "GRHUM.RG_RAPPORT"; 
+    fetchSpecificationDictionary = {}; 
+    name = "RGrhum_Rapport"; 
+    primaryKeyAttributes = (rapportId); 
+    relationships = (
+        {
+            deleteRule = EODeleteRuleCascade; 
+            destination = "RGrhum_ReleveAnomalie"; 
+            isToMany = Y; 
+            joinSemantic = EOInnerJoin; 
+            joins = ({destinationAttribute = ranRapportId; sourceAttribute = rapportId; }); 
+            name = toReleveAnnomalies; 
+        }
+    ); 
+}

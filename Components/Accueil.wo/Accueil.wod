@@ -1,0 +1,154 @@
+Wrapper : Wrapper {
+	onloadJS = onloadJS;
+}
+
+noSheduler : WOConditional {
+	condition = ctrl.hasScheduler;
+	negate = true;
+}
+
+hasScheduler : WOConditional {
+	condition = ctrl.hasScheduler;
+}
+
+DernierRapportContainer : AjaxUpdateContainer {
+	id = "DernierRapportContainer";
+	frequency = "5";
+	//decay = "2";
+}
+ValidationInProgress : WOConditional {
+	condition = ctrl.isValidationInProgress;
+}
+NoValidationInProgress : WOConditional {
+	condition = ctrl.isValidationInProgress;
+	negate = yes;
+}
+ValidationAlertImg : WOImage {
+	border = 0;
+	framework = "FwkCktlThemes";
+	filename = "images/24x24/001_11_24x24.png";
+	style = "vertical-align:top;";
+	id = "busyLocal";
+}
+
+ValidationBusyImg : WOImage {
+	border = 0;
+	framework = "FwkCktlThemes";
+	filename = "images/ajax-loader_bleu.gif";
+	style = "vertical-align:top;";
+	id = "busyLocal";
+}
+
+IndicateurBusy : WOImage {
+	border = 0;
+	framework = "FwkCktlThemes";
+	filename = "images/ajax-loader_bleu.gif";
+	style = "display:none;vertical-align:top;";
+	id = "busyLocal";
+	// width = "16px";
+	// height = "16px";
+}
+IndicateurBusy1 : WOImage {
+	border = 0;
+	framework = "FwkCktlThemes";
+	filename = "images/ajax-loader_bleu.gif";
+	style = "display:none;vertical-align:top;";
+	id = "busyLocal1";
+	width = "16px";
+	height = "16px";
+}
+
+ExceptionModalDialog: CktlAjaxModalDialog {
+	id = "ExceptionModalDialog";
+	pageName = "Erreur";
+	title = "Une erreur inattendue est survenue";
+	minWidth = 500;
+	resizable = true;
+	minimizable = false;
+	closable = false;
+	maximizable = false;
+	draggable = true;
+	centerVertically = true;
+	open = isOpenFenetreException;
+	showOpener = false;
+}
+
+hasRapport : WOConditional {
+	condition = rapport;
+}
+
+else : ERXElse {
+
+}
+
+lastReportDate : WOString {
+	value = rapport.rapportDDebut;
+	dateformat = dateHeureFormat;
+}
+
+lastReportEnded : WOConditional {
+	condition = rapport.isEndedWell;
+}
+
+lastReportNotEnded : WOConditional {
+	condition = rapport.isEndedWell;
+	negate = true;
+}
+
+nbAnomalies : WOString {
+	value = rapport.toReleveAnnomalies.@count;
+	valueWhenEmpty = "0";
+}
+
+ConsulterRapport : CktlAjaxActionButton {
+	action = ctrl.goLastResulRedirect;
+	text = "Consulter le rapport";
+	title = "Consulter le rapport de validation";
+	type = "process";
+}
+
+BasToolbar : CktlAjaxToolbar {
+	cssStyle = "text-align:right;margin-top:4px;";
+}
+
+NouveauRapport : CktlAjaxActionButton {
+    action = ctrl.doNouveauRapport;
+    text = "Ajouter une nouvelle validation";
+    enabled = ctrl.doNewValidationEnabled;
+    type = "new";
+    title = "Effectuer une nouvelle validation";
+    updateContainerID = "DernierRapportContainer";
+    //onClick = "if (confirm('Attention le rapport actuel sera remplac&eacute; par le nouveau. Voulez-vous vraiment effectuer une nouvelle validation ?')) {return true;} else {return false;}";
+}
+
+HasNextReport : WOConditional {
+	condition = ctrl.hasNextScheduledValidation;
+}
+
+triggers : WORepetition {
+	list = ctrl.getNextTriggers;
+	item = ctrl.itemNextTrigger;
+}
+
+DateProgramee : WOString {
+	value = ctrl.itemNextTrigger.nextFireTime;
+	dateformat = dateHeureFormat;
+}
+
+ItemProg : MenuItemAccueil {
+    action = ctrl.goProgrammationPeriode;
+    title = "Programmer un nouveau rapport périodique...";
+    disabled = true;
+}
+
+ItemNouvRapport : MenuItemAccueil {
+    action = ctrl.doNouveauRapport;
+    title = "Effectuer un nouveau rapport maintenant...";
+    disabled = ctrl.doNewValidationDisabled;
+}
+
+ItemLast : MenuItemAccueil {
+    action = ctrl.goLastResult;
+    title = "Parcourir les résultats du dernier rapport...";
+    disabled = ctrl.lastResultMenuDisabled;
+}

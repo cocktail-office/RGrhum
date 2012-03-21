@@ -1,0 +1,12 @@
+Wrapper : Wrapper {
+	onloadJS = onloadJS;
+}
+
+Evenements : EvenementsUI {
+    displayGroup = dg;
+    utilisateur = session.applicationUser.personne;
+    //editingContext = avenant.editingContext;
+    //delegate = delegate;
+    //wrapper = "WrapperModal";
+    //personnesTbvHelper = personnesContactTbvHelper;
+}

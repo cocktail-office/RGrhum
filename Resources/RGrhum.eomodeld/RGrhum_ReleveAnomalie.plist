@@ -1,0 +1,76 @@
+{
+    attributes = (
+        {
+            allowsNull = Y; 
+            columnName = "RAN_C_STRUCTURE"; 
+            externalType = VARCHAR2; 
+            name = cStructure; 
+            valueClassName = NSString; 
+            valueType = S; 
+            width = 10; 
+        }, 
+        {
+            allowsNull = Y; 
+            columnName = "RAN_MESSAGE_ERREUR"; 
+            externalType = VARCHAR2; 
+            name = messageErreur; 
+            valueClassName = NSString; 
+            valueType = S; 
+            width = 1024; 
+        }, 
+        {
+            allowsNull = Y; 
+            columnName = "RAN_PERSID"; 
+            externalType = NUMBER; 
+            name = persid; 
+            valueClassName = NSNumber; 
+            valueType = i; 
+        }, 
+        {
+            columnName = "RAN_ID"; 
+            externalType = NUMBER; 
+            name = ranId; 
+            valueClassName = NSNumber; 
+            valueType = i; 
+        }, 
+        {
+            columnName = "RAN_RAPPORT_ID"; 
+            externalType = NUMBER; 
+            name = ranRapportId; 
+            valueClassName = NSNumber; 
+            valueType = i; 
+        }
+    ); 
+    attributesUsedForLocking = (cStructure, messageErreur, persid, ranId, ranRapportId); 
+    className = "org.cocktail.rgrhum.serveur.metier.EOReleveAnomalie"; 
+    classProperties = (cStructure, messageErreur, persid, toIndividus, toRapport, toStructures); 
+    externalName = "GRHUM.RG_RELEVE_ANOMALIE"; 
+    fetchSpecificationDictionary = {}; 
+    internalInfo = {"_clientClassPropertyNames" = (toIndividus, toStructures); }; 
+    name = "RGrhum_ReleveAnomalie"; 
+    primaryKeyAttributes = (ranId); 
+    relationships = (
+        {
+            destination = "Fwkpers_Individu"; 
+            isToMany = Y; 
+            joinSemantic = EOInnerJoin; 
+            joins = ({destinationAttribute = persId; sourceAttribute = persid; }); 
+            name = toIndividus; 
+        }, 
+        {
+            destination = "RGrhum_Rapport"; 
+            isMandatory = Y; 
+            isToMany = N; 
+            joinSemantic = EOInnerJoin; 
+            joins = ({destinationAttribute = rapportId; sourceAttribute = ranRapportId; }); 
+            name = toRapport; 
+        }, 
+        {
+            destination = "Fwkpers_Structure"; 
+            isToMany = Y; 
+            joinSemantic = EOInnerJoin; 
+            joins = ({destinationAttribute = persId; sourceAttribute = persid; }); 
+            name = toStructures; 
+        }
+    ); 
+}

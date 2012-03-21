@@ -1,0 +1,74 @@
+<webobject name = "Wrapper">
+  <table cellpadding = "0" cellspacing = "0" width = "100%">
+    <tbody>
+      <tr>
+        <td>
+          <div class = "cktl_accueil_wrapper_horizontal">
+          	<webobject name = "DernierRapportContainer">
+          	<webobject name = "noSheduler">
+          		 <div class = "box" style = "margin-bottom:1em;text-align:left;">
+          		 <p>L'application ne possède aucun ordonnanceur de configurer, aucune validation n'est possible.
+          		 	<br/>
+          		 	Veuillez vous reporter à la configuration de l'application. Merci.
+          		 </p>
+          		 </div>
+          	</webobject>
+          	<webobject name = "hasScheduler">
+              <div class = "box" style = "margin-bottom:1em;text-align:left;">
+                <div class = "boxTitre">Dernier rapport de validation</div>
+                <webobject name = "ValidationInProgress">
+                  <div class="blocInfo">
+	                  <webobject name = "ValidationAlertImg" />
+	                  Une validation du r&eacute;ferentiel est en cours, ceci peut durer plusieurs minutes.<br/>
+	                  Veuillez patienter avant de pouvoir acc&eacute;der au rapport de validation.<webobject name = "ValidationBusyImg" />
+                  </div>
+                </webobject>
+                <div style = "margin:1em;padding:2px;">
+                  <webobject name = "hasRapport">
+                    Derni&egrave;re validation effectu&eacute;e le 
+                    <webobject name = "lastReportDate" />
+                    <webobject name = "lastReportEnded">
+	                    avec <webobject name = "nbAnomalies" /> anomalie(s).<webobject name = "ConsulterRapport"/>
+                    </webobject>
+                    <webobject name = "lastReportNotEnded">
+                    	. <webobject name = "ValidationAlertImg" /> La validation ne s'est pas bien terminée.
+                    </webobject>
+                  </webobject>
+                  <webobject name = "else"><p>Aucun rapport de validation n'est actuellement disponible.</p></webobject>
+                  <webobject name = "BasToolbar"> <webobject name = "NouveauRapport" /> </webobject>
+                </div>
+              </div>
+              <webobject name = "NoValidationInProgress">
+              <webobject name = "HasNextReport">
+              	<div>
+              		<ul>
+              		<webobject name = "triggers">
+              			<li>Prochaine validation programmée pour le <webobject name = "DateProgramee"/></li>
+              		</webobject>
+              		</ul>
+              	</div>
+              </webobject>
+              </webobject>
+            
+            <div class = "col1">
+              <h3>G&eacute;rer la validation<webobject name = "IndicateurBusy" /></h3>
+              <ul class = "menu">
+                <webobject name = "ItemProg">Programmation p&eacute;riodique </webobject>
+                <webobject name = "ItemNouvRapport">Ajouter une nouvelle validation </webobject>
+              </ul>
+            </div>
+            <div class = "col2">
+              <h3>Consulter<webobject name = "IndicateurBusy1" /></h3>
+              <ul class = "menu">
+                <webobject name = "ItemLast">Dernier rapport de validation </webobject>
+              </ul>
+            </div>
+            </webobject>
+            </webobject>
+          </div>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <webobject name = "ExceptionModalDialog" />
+</webobject>

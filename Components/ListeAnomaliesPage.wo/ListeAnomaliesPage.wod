@@ -1,0 +1,11 @@
+Wrapper : Wrapper {
+	onloadJS = onloadJS;
+}
+
+VueRapport : VueRapport {
+	rapport = rapport;
+}
+
+VueListeAnomalies : VueListeAnomalies {
+	listeAnomalies = rapport.toReleveAnnomalies;
+}

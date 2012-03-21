@@ -1,0 +1,34 @@
+{
+    EOModelVersion = "2.1"; 
+    adaptorName = JDBC; 
+    connectionDictionary = {password = ""; username = ""; }; 
+    entities = (
+        {
+            className = "org.cocktail.rgrhum.serveur.metier.EORapport"; 
+            name = "RGrhum_Rapport"; 
+        }, 
+        {
+            className = "org.cocktail.rgrhum.serveur.metier.EOReleveAnomalie"; 
+            name = "RGrhum_ReleveAnomalie"; 
+        }
+    ); 
+    internalInfo = {"_deletedEntityNamesInObjectStore" = ("RGrhum_ReleveAnnomalie"); }; 
+    userInfo = {
+        "_EntityModeler" = {
+            activeDatabaseConfigName = Default; 
+            databaseConfigs = {
+                Default = {adaptorName = JDBC; connectionDictionary = {password = ""; username = ""; }; }; 
+                grhum = {
+                    adaptorName = JDBC; 
+                    connectionDictionary = {
+                        URL = "dbc:oracle:thin:@localhost:1521:cktl"; 
+                        password = grhum; 
+                        username = grhum; 
+                    }; 
+                }; 
+            }; 
+            reverseEngineered = Y; 
+        }; 
+        modelId = GRHUM; 
+    }; 
+}

@@ -1,0 +1,18 @@
+DateDebRapport : WOString {
+	value = rapport.rapportDDebut;
+	dateformat = dateHeureFormat;
+}
+
+DateFinRapport : WOString {
+	value = rapport.rapportDFin;
+	dateformat = dateHeureFormat;
+}
+
+DureeRapport : WOString {
+	value = dureeRapport;
+	//dateformat = "%Hh %Mm %Ss";
+}
+
+NbAnomaliesRapport : WOString {
+	value = rapport.toReleveAnnomalies.@count;
+}

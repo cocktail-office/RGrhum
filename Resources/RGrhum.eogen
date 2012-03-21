@@ -1,0 +1,1 @@
+ -destination Sources -extension java -java -javaTemplate _Entity.java -model Resources/RGhrum.eomodeld -packagedirs -subclassDestination Sources -subclassJavaTemplate Entity.java -templatedir _EOGenVelocityTemplates -verbose -loadModelGroup

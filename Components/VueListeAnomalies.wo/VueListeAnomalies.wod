@@ -1,0 +1,8 @@
+AnomaliesTBV : CktlAjaxTableView {
+	item = itemAnomalie;
+	id = "AnomaliesTBV";
+	colonnes = colonnes;
+	dg = anomaliesDG;
+	selectionEnabled = false;
+	afficherBarreDeNavigation = true;
+}
